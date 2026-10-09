@@ -1,0 +1,7 @@
+supplier,sku,rtv_allowed,credit_pct,window_days
+SoundMax,WH001,True,60,30
+KeyPro,KB001,True,70,30
+ClickTech,MS001,False,0,0
+TimeTech,WB001,True,50,15
+SoundMax,SP001,True,60,30
+DataStore,HD001,True,65,20

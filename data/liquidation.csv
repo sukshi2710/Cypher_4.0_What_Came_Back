@@ -1,0 +1,13 @@
+category,grade,recovery_pct_of_cost
+Electronics,A,50
+Electronics,B,35
+Electronics,C,20
+Electronics,D,10
+Wearables,A,45
+Wearables,B,30
+Wearables,C,15
+Wearables,D,5
+Storage,A,55
+Storage,B,40
+Storage,C,25
+Storage,D,10

@@ -1,1 +1,7 @@
-
+sku,product_name,category,cost_price,selling_price,supplier
+WH001,Wireless Headphones,Electronics,1400,2500,SoundMax
+KB001,Mechanical Keyboard,Electronics,1800,3200,KeyPro
+MS001,Wireless Mouse,Electronics,450,900,ClickTech
+WB001,Smart Watch,Wearables,2200,4000,TimeTech
+SP001,Bluetooth Speaker,Electronics,900,1800,SoundMax
+HD001,External Hard Drive,Storage,2500,4200,DataStore
