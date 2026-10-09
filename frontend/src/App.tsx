@@ -1,89 +1,66 @@
-import { useState } from 'react';
-import { LayoutDashboard, SlidersHorizontal, ShieldAlert } from 'lucide-react';
-
-// Import your dynamic view components
-import DashboardReturns from './components/DashboardReturns';
-import ReturnApprovalHub from './components/ReturnApprovalHub';
-import SupplierQualityView from './components/SupplierQualityView';
+import { useState } from "react";
+import DashboardReturns from "./components/DashboardReturns";
+import ReturnApprovalHub from "./components/ReturnApprovalHub";
+import SupplierQualityView from "./components/SupplierQualityView";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('dashboard');
+  const [activeTab, setActiveTab] = useState<"dashboard" | "approval" | "suppliers">("dashboard");
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-100 font-sans overflow-hidden">
-      
-      {/* Sidebar Navigation */}
-      <aside className="w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between shrink-0">
-        <div>
-          {/* Logo / Brand */}
-          <div className="p-6 border-b border-slate-800 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-teal-500 flex items-center justify-center text-slate-950 font-black text-lg shadow-lg shadow-teal-500/20">
-              G
-            </div>
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+      {/* Top Navigation Bar */}
+      <header className="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🔄</span>
             <div>
-              <h2 className="text-sm font-black tracking-tight text-white">Gadgetbay</h2>
-              <p className="text-[10px] text-teal-400 font-bold uppercase tracking-wider">Returns Agent v2.6</p>
+              <h1 className="text-xl font-bold tracking-tight text-white">WHAT CAME BACK</h1>
+              <p className="text-xs text-slate-400">Intelligent E-Commerce Returns & Recovery Platform</p>
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="p-4 space-y-1.5">
+          {/* Navigation Tabs */}
+          <nav className="flex gap-2 bg-slate-900 p-1.5 rounded-lg border border-slate-700">
             <button
-              onClick={() => setActiveTab('dashboard')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition cursor-pointer ${
-                activeTab === 'dashboard'
-                  ? 'bg-teal-500 text-slate-950 shadow-md shadow-teal-500/20'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              onClick={() => setActiveTab("dashboard")}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === "dashboard"
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
               }`}
             >
-              <LayoutDashboard size={18} /> Dashboard &amp; ROI
+              Dashboard
             </button>
-
             <button
-              onClick={() => setActiveTab('routes')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition cursor-pointer ${
-                activeTab === 'routes'
-                  ? 'bg-teal-500 text-slate-950 shadow-md shadow-teal-500/20'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              onClick={() => setActiveTab("approval")}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === "approval"
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
               }`}
             >
-              <SlidersHorizontal size={18} /> Route Splitter &amp; Approvals
+              Approval Hub
             </button>
-
             <button
-              onClick={() => setActiveTab('suppliers')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition cursor-pointer ${
-                activeTab === 'suppliers'
-                  ? 'bg-teal-500 text-slate-950 shadow-md shadow-teal-500/20'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              onClick={() => setActiveTab("suppliers")}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === "suppliers"
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
               }`}
             >
-              <ShieldAlert size={18} /> Supplier Quality (HB-09)
+              Supplier Quality
             </button>
           </nav>
         </div>
+      </header>
 
-        {/* User Profile Footer */}
-        <div className="p-4 border-t border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-teal-400 text-xs">
-              SR
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white">Sneha Reddy</p>
-              <p className="text-[10px] text-slate-400">Returns &amp; Recovery Lead</p>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto bg-slate-950">
-        {activeTab === 'dashboard' && <DashboardReturns />}
-        {activeTab === 'routes' && <ReturnApprovalHub />}
-        {activeTab === 'suppliers' && <SupplierQualityView />}
+      {/* Dynamic Content Body */}
+      <main className="max-w-7xl mx-auto px-6 py-8">
+        {activeTab === "dashboard" && <DashboardReturns />}
+        {activeTab === "approval" && <ReturnApprovalHub />}
+        {activeTab === "suppliers" && <SupplierQualityView />}
       </main>
-
     </div>
   );
 }
